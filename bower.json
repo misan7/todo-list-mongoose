@@ -1,0 +1,17 @@
+{
+  "name": "todo-mongoose",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Sergio MT <sergio.mt88@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

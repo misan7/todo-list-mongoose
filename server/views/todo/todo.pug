@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        h2.title-focus ¿Qué tareas piensas hacer hoy?
+        form.form-center(action="/tasks", name='checkListForm', method= 'POST')
+          input.input-task(type='text', name='title', placeholder='Añade tareas...', autofocus)
+          button#add.btn.btn-primary
+            i.glyphicon.glyphicon-plus
+        br
+        br
+        ul.list-unstyled.list-tasks
+          each task in tasks
+            li.list-group-item
+              p.title-name #{task.title}
+              p.creation-date Created at #{moment(task.createdAt).format('YYYY/MM/DD HH:mm')}
+              //- P.modified-date.hidden Last update #{moment(task.modifiedAt).format('YYYY/MM/DD HH:mm')}
+              form.edit-form(action=`/task/${task._id}`)
+                input.input-lg.hidden.hid-input(name='edited-name', value=task.title)
+              .contain
+                button.btn.btn-danger.remove(href=`/task/${task._id}`)
+                  i.glyphicon.glyphicon-remove
+                button.btn.btn-primary.edit(href=`/task/${task._id}`)
+                  i.glyphicon.glyphicon-pencil

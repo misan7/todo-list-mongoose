@@ -1,0 +1,19 @@
+{
+  "name": "todo-mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/app",
+    "dev": "supervisor server/app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.2",
+    "pug": "^2.0.0-rc.1"
+  }
+}
