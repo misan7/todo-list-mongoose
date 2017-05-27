@@ -12,16 +12,21 @@ block content
             i.glyphicon.glyphicon-plus
         br
         br
-        ul.list-unstyled.list-tasks
-          each task in tasks
-            li.list-group-item
-              p.title-name #{task.title}
-              p.creation-date Created at #{moment(task.createdAt).format('YYYY/MM/DD HH:mm')}
-              //- P.modified-date.hidden Last update #{moment(task.modifiedAt).format('YYYY/MM/DD HH:mm')}
-              form.edit-form(action=`/task/${task._id}`)
-                input.input-lg.hidden.hid-input(name='edited-name', value=task.title)
-              .contain
-                button.btn.btn-danger.remove(href=`/task/${task._id}`)
-                  i.glyphicon.glyphicon-remove
-                button.btn.btn-primary.edit(href=`/task/${task._id}`)
-                  i.glyphicon.glyphicon-pencil
+        if (tasks.length === 0)
+          p.no-tasks No hay tareas por realizar
+        else 
+          ul.list-unstyled.list-tasks
+            each task in tasks
+              li.list-group-item
+                p.title-name #{task.title}
+                p.creation-date Created at #{moment(task.createdAt).format('YYYY/MM/DD HH:mm')}
+                //- P.modified-date.hidden Last update #{moment(task.modifiedAt).format('YYYY/MM/DD HH:mm')}
+                form.edit-form(action=`/task/${task._id}`)
+                  input.input-lg.hidden.hid-input(name='edited-name', value=task.title)
+                .contain
+                  button.btn.btn-primary.edit(href=`/task/${task._id}`)
+                    i.glyphicon.glyphicon-pencil
+                  button.btn.btn-danger.remove(href=`/task/${task._id}`)
+                    i.glyphicon.glyphicon-remove
+                  button.btn.btn-success.done(href=`/task/${task._id}`)
+                    i.glyphicon.glyphicon-ok                  

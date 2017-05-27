@@ -1,17 +1,23 @@
 $('.list-tasks .remove').on('click', function(e) {
 	e.preventDefault()
+
 	const $thisElement = $(this)
 	const url = $thisElement.attr("href")
 	const method = 'DELETE'
+
 	$.ajax({url, method})
 		.done( response => {
-		$thisElement.parents('.list-group-item').remove()
+		$thisElement
+      .parents('.list-group-item')
+        .remove()
 	})
 })
 
 $('.list-tasks .edit').on('click', function(e) {
 	e.preventDefault()
+
 	const $thisElement = $(this)
+
   	$thisElement
     .parents('.list-group-item')
       .find("form input")
@@ -47,5 +53,20 @@ $(".edit-form").on("submit", function(e) {
       .siblings("p.creation-date")
         .removeClass("hidden")
   })
+})
 
+$('.list-tasks .done').on('click', function(e) {
+    e.preventDefault()
+
+    const $thisElement = $(this)
+    const url = $thisElement.attr("href")
+    const method = 'PUT'
+
+    $.ajax({url, method})
+      .done( response => {
+      $thisElement
+        .parents('.list-group-item')
+        .prop(`${completed=true}`)
+        // .remove()
+    })
 })

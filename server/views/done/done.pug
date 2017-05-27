@@ -1,4 +1,14 @@
 extends ../layout
 
 block content
-  h1 No encuentro las rutas bien! En network salen mal las rutas!
+
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        h2.title-focus Tareas realizadas
+        br
+        br
+        ul.list-unstyled.list-tasks
+          each task in tasks
+            li.list-group-item
+              p.title-name #{task.title}
