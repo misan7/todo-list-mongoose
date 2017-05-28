@@ -19,8 +19,7 @@ block content
             each task in tasks
               li.list-group-item
                 p.title-name #{task.title}
-                p.creation-date Created at #{moment(task.createdAt).format('YYYY/MM/DD HH:mm')}
-                //- P.modified-date.hidden Last update #{moment(task.modifiedAt).format('YYYY/MM/DD HH:mm')}
+                p.creation-date Creado en #{moment(task.createdAt).format('YYYY/MM/DD HH:mm')}
                 form.edit-form(action=`/task/${task._id}`)
                   input.input-lg.hidden.hid-input(name='edited-name', value=task.title)
                 .contain

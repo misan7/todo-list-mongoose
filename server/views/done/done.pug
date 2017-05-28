@@ -12,3 +12,4 @@ block content
           each task in tasks
             li.list-group-item
               p.title-name #{task.title}
+              p.creation-date (Terminado en #{moment(task.modifiedAt).format('LLL')})

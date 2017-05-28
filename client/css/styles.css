@@ -78,3 +78,11 @@ p .navbar-link:hover {
     justify-content: center;
     text-align: center;
 }
+
+.creation-date {
+    font-style: italic;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

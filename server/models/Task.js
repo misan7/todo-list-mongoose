@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const moment = require('moment')
+
 const Schema = mongoose.Schema
 
 const TaskSchema = new Schema({
@@ -8,9 +10,12 @@ const TaskSchema = new Schema({
 		},
 		createdAt: {
 			type: Number,
-			default: +new Date
+			default: moment().valueOf()
 		},
-		modifiedAt: Number,
+		modifiedAt: {
+			type: Number,
+			default: moment().valueOf()
+		},
 		completed: {
 			type: Boolean,
 			default: false

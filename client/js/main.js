@@ -61,12 +61,10 @@ $('.list-tasks .done').on('click', function(e) {
     const $thisElement = $(this)
     const url = $thisElement.attr("href")
     const method = 'PUT'
+    const data = 'completed=' + true
 
-    $.ajax({url, method})
+    $.ajax({ url, method, data })
       .done( response => {
-      $thisElement
-        .parents('.list-group-item')
-          // .{completed:true}
-          .remove()
-    })
+        location.reload()
+      })
 })
