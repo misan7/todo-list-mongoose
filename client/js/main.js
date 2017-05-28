@@ -66,7 +66,7 @@ $('.list-tasks .done').on('click', function(e) {
       .done( response => {
       $thisElement
         .parents('.list-group-item')
-        .prop(`${completed=true}`)
-        // .remove()
+          // .{completed:true}
+          .remove()
     })
 })

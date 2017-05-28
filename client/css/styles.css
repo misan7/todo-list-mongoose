@@ -7,6 +7,11 @@ body {
     background-color: black;
 }
 
+.navbar {
+    border-radius: 0;
+    border: 0;
+}
+
 .navbar-header .navbar-brand {
     -webkit-transition: color 1s;
     transition: color 1s;
