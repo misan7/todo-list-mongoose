@@ -14,14 +14,13 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-const DB_URI = process.env.DB_URI
+const DB_URL = process.env.DB_URL
 const PORT = process.env.PORT
 
 const app = express()
 
 mongoose.Promise = Promise
-mongoose.connect(DB_URI)
-console.log(DB_URI)
+mongoose.connect(DB_URL)
 
 app.use(express.static( path.join(__dirname, '../client') ))
 app.set('view engine', 'pug')
