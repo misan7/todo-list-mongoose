@@ -20,7 +20,8 @@ const PORT = process.env.PORT
 const app = express()
 
 mongoose.Promise = Promise
-mongoose.connect(dbUrl)
+mongoose.connect(DB_URI)
+console.log(DB_URI)
 
 app.use(express.static( path.join(__dirname, '../client') ))
 app.set('view engine', 'pug')
