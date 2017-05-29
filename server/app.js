@@ -8,8 +8,14 @@ const routerTask = require('./routes/task')
 const apiKey = require('./routes/middlewares/apikey')
 const routerbodyParser = require('./routes/middlewares/bodyParser')
 
-const dbUrl = 'mongodb://localhost:27017/test'
-const PORT = 3000
+// const dbUrl = 'mongodb://localhost:27017/test'
+// const PORT = 3000
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const DB_URI = process.env.DB_URI
+const PORT = process.env.PORT
 
 const app = express()
 
