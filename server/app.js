@@ -10,6 +10,8 @@ const routerbodyParser = require('./routes/middlewares/bodyParser')
 
 // const dbUrl = 'mongodb://localhost:27017/test'
 // const PORT = 3000
+// npm install dotenv --save-dev
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -32,6 +34,8 @@ app.locals.moment = require('moment')
 app.use(routerbodyParser)
 app.use('/tasks', routerTasks)
 app.use('/task', routerTask)
+
+app.get('/', (req,res) => res.redirect('/tasks'))
 
 app.listen(PORT)
 console.log(`Doing Ninja Things on PORT ${PORT}`);
