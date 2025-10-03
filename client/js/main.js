@@ -10,6 +10,12 @@ $(".list-tasks .remove").on("click", function (e) {
   });
 });
 
+$(function () {
+  $(".list-tasks li").each(function (i, el) {
+    const $el = $(el);
+    setTimeout(() => $el.addClass("fade-in"), i * 40);
+  });
+});
 $(".list-tasks").on("click", ".edit", function (e) {
   e.preventDefault();
 
