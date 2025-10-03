@@ -64,7 +64,7 @@ p .navbar-link:hover {
 .list-tasks li {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.78);
+  background-color: rgba(0, 0, 0, 0.55);
   border-radius: 8px;
   margin: 10px 0;
   padding: 12px 14px;
