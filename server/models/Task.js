@@ -1,27 +1,41 @@
-const mongoose = require('mongoose')
-const moment = require('moment')
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema
+const { Schema } = mongoose;
 
-const TaskSchema = new Schema({
-		title: {
-			type: String,
-			required: true
-		},
-		createdAt: {
-			type: Number,
-			default: moment().valueOf()
-		},
-		modifiedAt: {
-			type: Number,
-			default: moment().valueOf()
-		},
-		completed: {
-			type: Boolean,
-			default: false
-		}
-})
+// Use Mongoose timestamps to keep createdAt/modifiedAt in sync.
+// Use Date types (not Number) and avoid evaluating timestamps at module load.
+const TaskSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    completed: {
+      type: Boolean,
+      default: false,
+      index: true,
+    },
+  },
+  {
+    timestamps: { createdAt: "createdAt", updatedAt: "modifiedAt" },
+  }
+);
 
-const Task = mongoose.model('Task', TaskSchema)
+// Add a small compound index to help common queries (completed + newest first)
+TaskSchema.index({ completed: 1, createdAt: -1 });
 
-module.exports = Task
+// toJSON transform: return `id` instead of `_id`, remove __v
+TaskSchema.set("toJSON", {
+  virtuals: true,
+  transform: (doc, ret) => {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+});
+
+const Task = mongoose.model("Task", TaskSchema);
+
+module.exports = Task;
