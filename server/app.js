@@ -25,8 +25,6 @@ mongoose.Promise = Promise;
 
 // Connect to MongoDB with recommended options and fail fast if unreachable
 const mongooseOpts = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   // Shorten server selection timeout so startup fails quickly when the DB is unreachable
   serverSelectionTimeoutMS: 5000,
 };
