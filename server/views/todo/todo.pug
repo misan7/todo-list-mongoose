@@ -23,9 +23,9 @@ block content
                 form.edit-form(action=`/task/${task._id}`)
                   input.input-lg.hidden.hid-input(name='edited-name', value=task.title)
                 .contain
-                  button.btn.btn-primary.edit(href=`/task/${task.id}`)
+                  button.btn.btn-primary.edit(href=`/task/${task._id}`)
                     i.glyphicon.glyphicon-pencil
-                  button.btn.btn-danger.remove(href=`/task/${task.id}`)
+                  button.btn.btn-danger.remove(href=`/task/${task._id}`)
                     i.glyphicon.glyphicon-remove
                   button.btn.btn-success.done(href=`/task/${task._id}`)
                     i.glyphicon.glyphicon-ok                  
