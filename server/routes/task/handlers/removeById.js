@@ -4,12 +4,13 @@ function removeById (req,res) {
 
   const { id } = req.params
 
-  Task.findByIdAndRemove(id)
-    .then( msg => {
-      res.json(msg)
+  Task.findByIdAndDelete(id)
+    .then( doc => {
+      if (!doc) return res.status(404).json({ ok: false, message: 'Not found' })
+      res.json({ ok: true, deleted: true, doc })
     })
     .catch( err => {
-      res.json(err)
+      res.status(500).json({ ok: false, error: err.message || err })
     })
 
 }
